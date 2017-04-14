@@ -5,13 +5,17 @@ import java.util.Collection;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 
 @Entity
+// requete nommée, utilisable dans les autre classes (Classe.nom est purement cosmétique !!!)
+@NamedQuery(name="Contact.findAll", query="SELECT c FROM Contact c")
 public class Contact {
 
 	@Id
@@ -22,11 +26,11 @@ public class Contact {
 	private String prenom;
 	private String email;
 	
-	// sauve et efface en cascade
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	// CascadeType sauve,efface,MàJ en cascade, FetchType change chargement en lazy ou eager
+	@ManyToOne(cascade=CascadeType.PERSIST,fetch=FetchType.LAZY)
 	private Adresse adresse;
 	
-	@ManyToMany
+	@ManyToMany(cascade=CascadeType.PERSIST)
 	private Collection<Film> films;
 	
 	public int getId() {
@@ -60,8 +64,16 @@ public class Contact {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
+	public Collection<Film> getFilms() {
+		return films;
+	}
+	public void setFilms(Collection<Film> films) {
+		this.films = films;
+	}
 	@Override
 	public String toString() {
-		return "contact [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + "]";
+		return "Contact [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", adresse=" + adresse
+				+ "]";
 	}
+
 }

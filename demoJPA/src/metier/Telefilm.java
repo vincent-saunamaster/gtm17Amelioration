@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 
 @Entity
 //héritage simple, seule la mère a une table
-//@DiscriminatorValue("TELEFILM")
+@DiscriminatorValue("TELEFILM")
 //heritage par table jointe et concrete
 public class Telefilm extends Film {
 
@@ -18,6 +18,10 @@ public class Telefilm extends Film {
 	public void setChaine(String chaine) {
 		this.chaine = chaine;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Telefilm [chaine=" + chaine + ", toString()=" + super.toString() + "]";
+	}
 	
 }

@@ -14,12 +14,12 @@ import javax.persistence.ManyToMany;
 
 @Entity
 // héritage simple, seule la mère a une table
-//@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-//@DiscriminatorColumn(name="TYPE_FILM")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="TYPE_FILM")
 // heritage par table concrete
 //@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 //heritage par table jointe
-@Inheritance(strategy=InheritanceType.JOINED)
+//@Inheritance(strategy=InheritanceType.JOINED)
 public abstract class Film {
 
 	@Id
@@ -31,7 +31,7 @@ public abstract class Film {
 	private int id_film;
 	private String nomFilm;
 	
-	// dans le cas ManyToMany, on choisit un esclave au hasard
+	// dans le cas ManyToMany, on choisit un esclave (mappedBy="l'attribut de la classe maitre")
 	@ManyToMany(mappedBy="films")
 	private Collection<Contact> contacts;
 	public int getId_film() {

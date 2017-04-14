@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 
 @Entity
 //héritage simple, seule la mère a une table
-//@DiscriminatorValue("LONG")
+@DiscriminatorValue("LONG")
 //heritage par table jointe et concrete
 public class LongMetrage extends Film {
 	
@@ -18,6 +18,10 @@ public class LongMetrage extends Film {
 	public void setCinema(String cinema) {
 		this.cinema = cinema;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "LongMetrage [cinema=" + cinema + ", toString()=" + super.toString() + "]";
+	}
 
 }

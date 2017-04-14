@@ -7,7 +7,7 @@
         <properties>
             <property name="hibernate.archive.autodetection" value="class" />
             
-            <!-- à commenter pour pas voir le resuetes sql dans la console -->
+            <!-- à commenter pour pas voir les resuetes sql dans la console -->
             <property name="hibernate.show_sql" value="true" />
             
             <property name="hibernate.format_sql" value="true" />
