@@ -5,17 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Ajouter Contact</title>
+<title>Ajouter Adresse</title>
 </head>
 <body>
-	<h1>Ajouter Contact</h1>
+	<h1>Ajouter Adresse</h1>
 	<hr />
-	<form action="AjoutContact?action=fromFormAjoutContact" method="post">
-		<fieldset id="section-1">
-			<legend>Informations personnelles</legend>
-			nom<input type="text" name="nom" /><br /> prenom<input type="text"
-				name="prenom" /><br /> email<input type="text" name="email" /><br />
-		</fieldset>
+	<form action="AjouterAdresse?action=fromFormAjouterAdresse"
+		method="post">
 		<fieldset id="section-2">
 			<legend>Informations personelles</legend>
 			nom de rue<input type="text" name="numRue" /><br /> code postal<input
@@ -23,10 +19,10 @@
 				name="ville" /><br /> commentaire<input type="text"
 				name="commentaire" /><br />
 		</fieldset>
-		<button name="ajoutvalider">valider saisie</button>
+		<button name="ajoutervalider">valider saisie</button>
 	</form>
 	<c:if test="${!empty requestScope.ajoutOk}">
-		<c:out value="Contact ajouté"></c:out>
+		<c:out value="Adresse ajoutée"></c:out>
 		<c:remove var="ajoutOk" scope="request" />
 	</c:if>
 	<hr />

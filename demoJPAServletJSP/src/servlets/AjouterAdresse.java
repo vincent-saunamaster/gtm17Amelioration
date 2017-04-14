@@ -1,7 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,21 +8,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import metier.Adresse;
-import metier.Contact;
 import service.Iservice;
 import service.Service;
 
 /**
- * Servlet implementation class AjoutContact
+ * Servlet implementation class AjouterAdresse
  */
-@WebServlet("/AjoutContact")
-public class AjoutContact extends HttpServlet {
+@WebServlet("/AjouterAdresse")
+public class AjouterAdresse extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Default constructor.
+	 * @see HttpServlet#HttpServlet()
 	 */
-	public AjoutContact() {
+	public AjouterAdresse() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -37,13 +36,13 @@ public class AjoutContact extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 
 		/**
-		 * AjoutContact
+		 * AjouterAdresse
 		 */
-		if (request.getParameter("action") != null && request.getParameter("action").equals("toFormAjoutContact")) {
-			request.getRequestDispatcher("/AjoutContact.jsp").forward(request, response);
+		if (request.getParameter("action") != null && request.getParameter("action").equals("toFormAjouterAdresse")) {
+			request.getRequestDispatcher("/AjouterAdresse.jsp").forward(request, response);
 		}
 
-		if (request.getParameter("action") != null && request.getParameter("action").equals("fromFormAjoutContact")) {
+		if (request.getParameter("action") != null && request.getParameter("action").equals("fromFormAjouterAdresse")) {
 
 			String numRue = request.getParameter("numRue");
 			String codePostal = (String) request.getParameter("codePostal");
@@ -56,23 +55,12 @@ public class AjoutContact extends HttpServlet {
 			a.setVille(ville);
 			a.setCommentaire(commentaire);
 
-			String nom = (String) request.getParameter("nom");
-			String prenom = (String) request.getParameter("prenom");
-			String email = (String) request.getParameter("email");
-
-			Contact c = new Contact();
-			c.setNom(nom);
-			c.setPrenom(prenom);
-			c.setEmail(email);
-
 			Iservice iserv = new Service();
-			// iserv.ajouterAdresse(a);
-			iserv.ajouterContactAdresse(c, a);
+			iserv.ajouterAdresse(a);
 
 			request.setAttribute("ajoutOk", "ok");
-			request.getRequestDispatcher("/AjoutContact.jsp").forward(request, response);
+			request.getRequestDispatcher("/AjouterAdresse.jsp").forward(request, response);
 		}
-
 	}
 
 	/**
