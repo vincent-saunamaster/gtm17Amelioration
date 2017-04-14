@@ -35,14 +35,18 @@ public class AjoutContact extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		//request.getRequestDispatcher("/AjoutContact.jsp");
+		
+		if (request.getParameter("action") != null && request.getParameter("action").equals("formajoutcontact")) {
+			request.getRequestDispatcher("/AjoutContact.jsp");
+		}
+		
 		if (request.getParameter("action") != null && request.getParameter("action").equals("ajoutcontact")) {
 
 			String numRue = request.getParameter("numRue");
 			String codePostal = (String) request.getParameter("codePostal");
 			String ville = (String) request.getParameter("ville");
 			String commentaire = (String) request.getParameter("commentaire");
-			
+
 			Adresse a = new Adresse();
 			a.setNumRue(numRue);
 			a.setCodePostal(codePostal);
@@ -52,19 +56,20 @@ public class AjoutContact extends HttpServlet {
 			String nom = (String) request.getParameter("nom");
 			String prenom = (String) request.getParameter("prenom");
 			String email = (String) request.getParameter("email");
-			
+
 			Contact c = new Contact();
 			c.setNom(nom);
 			c.setPrenom(prenom);
 			c.setEmail(email);
-			
+
 			Iservice iserv = new Service();
-			//iserv.ajouterAdresse(a);
+			// iserv.ajouterAdresse(a);
 			iserv.ajouterContactAdresse(c, a);
-			
-			request.getRequestDispatcher("/index.html");
-		}
-		request.getRequestDispatcher("/AjoutContact.jsp");
+
+			request.getRequestDispatcher("/AjoutContact.jsp");
+		} 
+
+
 	}
 
 	/**
