@@ -1,0 +1,7 @@
+<beans>
+	<interceptors>
+		<class>interceptor.Timer</class>
+		<class>interceptor.Auditor</class>
+		<class>interceptor.Interceptor2interceptor</class>
+	</interceptors>
+</beans>
