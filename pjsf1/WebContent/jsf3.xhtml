@@ -12,9 +12,11 @@
 <body>
 	coucou #{mbean1.message }
 	<h:form>
-saisie : <h:inputText value="#{mbean1.data}">
+saisie : <h:inputText id="inputdata" value="#{mbean1.data}">
 			<f:validateLength maximum="15"></f:validateLength>
 		</h:inputText>
+
+		<h:message for="inputdata"></h:message>
 		<br />
 saisie2 : <h:inputText value="#{mbean1.data2}" />
 		<br />
