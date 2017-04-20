@@ -1,0 +1,49 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>DataTable Example</h2>
+
+	<h:form>
+	nombre de clients : #{mbclients.getNb()}
+	<h:dataTable value="#{mbclients.clients}" var="cli">
+
+
+			<h:column>
+				<f:facet name="header">Nom</f:facet>    				
+               #{cli.nom}
+            </h:column>
+
+			<h:column>
+				<f:facet name="header">prenom</f:facet>
+               #{cli.prenom}
+            </h:column>
+
+			<h:column>
+				<f:facet name="header">appel select() du bean</f:facet>
+				<h:commandButton type="submit" value="select"
+					action="#{mbclients.select(cli)}"></h:commandButton>
+			</h:column>
+
+		</h:dataTable>
+		<br />
+
+		nom : <h:inputText id="nom" value="#{mbclients.clientCourant.nom}"></h:inputText>
+		<br />
+		prenom : <h:inputText id="prenom" value="#{mbclients.clientCourant.prenom}"></h:inputText>
+		<br />
+
+
+		<h:commandButton type="submit" value="add"
+			action="#{mbclients.ajout()}"></h:commandButton>
+	</h:form>
+</body>
+</html>

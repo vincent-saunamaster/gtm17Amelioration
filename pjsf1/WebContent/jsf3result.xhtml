@@ -12,9 +12,18 @@
 
 	Les deux concaténés jsf3result :
 	<h:outputText value="#{mbean1.lesDeux }" />
-	<h:form>
-		<h:commandLink action="jsf3">back to jsf3</h:commandLink>
+	<h:form id="laFormResult">
+	saisie dataresult : <h:inputText value="#{mbeanresult.dataresult}" />
+		<br />
+		<h:commandButton type="submit" value="go"></h:commandButton>
+		<br />
+		<h:commandButton action="jsf3" value="back to jsf3"></h:commandButton>
+		<br />
+		<h:outputText id="inputdataresult" value="Result"></h:outputText>
+		<br />
+		<h:message for="inputdataresult"></h:message>
 	</h:form>
+
 
 </body>
 </html>

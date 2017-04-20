@@ -1,7 +1,9 @@
 package exos;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 @ManagedBean(name = "mbean1", eager = true)
 @SessionScoped
@@ -23,6 +25,10 @@ public class Mbean1 {
 	public void setData2(String data2) {
 		System.out.println("setting data2 : " + data2);
 		this.data2 = data2;
+		FacesContext ctx = FacesContext.getCurrentInstance();
+		ctx.addMessage("laForm:inputdata2", new FacesMessage("le message ajouté à inputdata2 depuis le bean"));
+		ctx.addMessage("laForm:inputdata3", new FacesMessage("le message ajouté à inputdata3 depuis le bean"));
+		ctx.addMessage(null, new FacesMessage("le message ajouté à null depuis le bean"));
 	}
 
 	public String getData() {

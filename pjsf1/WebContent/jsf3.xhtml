@@ -11,27 +11,42 @@
 </head>
 <body>
 	coucou #{mbean1.message }
-	<h:form>
+	<h:form id="laForm">
 saisie : <h:inputText id="inputdata" value="#{mbean1.data}">
+			<!-- validteur auto explicite -->
 			<f:validateLength maximum="15"></f:validateLength>
 		</h:inputText>
-
+		<!-- message ajouté par le bean -->
 		<h:message for="inputdata"></h:message>
 		<br />
-saisie2 : <h:inputText value="#{mbean1.data2}" />
+		
+saisie2 : <h:inputText id="inputdata2" value="#{mbean1.data2}">
+			<!-- validteur perso par méthode -->
+			<f:validator validatorId="exos.ValidatorPerso" />
+		</h:inputText>
+
+		<h:message for="inputdata2" />
 		<br />
+
+		<h:outputText id="inputdata3" value=""></h:outputText>
+		<h:message for="inputdata3" />
+		<br />
+		<!-- navigation -->
 		<h:commandButton type="submit" value="go" />
 		<br />
 		<h:commandButton type="submit" value="goresult" action="jsf3result" />
 		<br />
-		<h:commandButton type="submit" value="goresultconditionnel"
+		<h:commandButton type="submit" value="go method resultconditionnel"
 			action="#{mbean1.goConditionnel}" />
 		<br />
-		<h:commandButton type="submit" value="go page suivante"
+		<h:commandButton type="submit"
+			value="go rule (faces-config.xml) page suivante"
 			action="pagesuivante" />
 		<br />
-		<h:commandButton type="submit" value="go error"
+		<h:commandButton type="submit" value="go rule + method error"
 			action="#{mbean1.testerreur}" />
+		<br />
+
 
 	</h:form>
 </body>
