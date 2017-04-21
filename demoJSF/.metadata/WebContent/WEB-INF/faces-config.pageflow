@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14927639918160" configfile="/demoJSF/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="jsf3.xhtml" id="pf14927649263681" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" outlinks="pf14927651257376 pf14927651257377" inlinks="pf14927651257378 pf149276521247313" path="index.html"/>
+  <nodes xsi:type="pageflow:PFPage" name="*" id="pf149276512573710" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf14927651257378 pf149276521247313" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="page2.xhtml" id="pf149276512573711" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf14927651257376" path="page2.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="page1.xhtml" id="pf149276512573712" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14927651257377" path="page1.xhtml"/>
+  <links id="pf14927651257376" target="pf149276512573711" source="pf14927649263681" outcome="pageDeux" fromaction="#{bean1.goToPage2}"/>
+  <links id="pf14927651257378" target="pf14927649263681" source="pf149276512573710" outcome="home"/>
+  <links id="pf14927651257377" target="pf149276512573712" source="pf14927649263681" outcome="pageUn"/>
+  <links id="pf149276521247313" target="pf14927649263681" source="pf149276512573710" outcome="home" fromaction="#{bean1.goToHome}"/>
+</pageflow:Pageflow>

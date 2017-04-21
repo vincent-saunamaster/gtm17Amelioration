@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!-- déclaration des 3 library JSF dans le "namespace XML" -->
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>formulaire1</title>
+	<h:outputStylesheet library="dossierParDefaut"
+		name="css/bootstrap.min.css" />
+</h:head>
+<h:body>
+	<h1>Premier exemple JSF 2.0 - formulaire1.xhtml</h1>
+	<h:form>
+		<!-- affiche  bean1.getNom() avant la saisie par l'utilisateur
+		mais fera un "bean1.setNom()"  quand l'utilisateur appuira sur le bouton 
+		Les étapes de conversion et de validation s'effecturont avant le "bean1.setNom()" -->
+		bean1.nom<h:inputText value="#{bean1.nom}" />
+		<br />
+		bean1.prenom<h:inputText value="#{bean1.prenom}" />
+		<br />
+		<h:commandButton value="passer à recupFormulaire1"
+			action="recupFormulaire1" />
+		<br />
+		<h:commandButton value="passer à méthode bean1.recupform1()"
+			action="#{bean1.recupform1()}" />
+	</h:form>
+</h:body>
+</html>

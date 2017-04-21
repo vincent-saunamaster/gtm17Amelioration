@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+	version="2.2">
+
+	<!-- une règle de navigation -->
+	<navigation-rule>
+		<!-- un seul <from-view-id> par <navigation-rule> -->
+		<from-view-id>index.html</from-view-id>
+
+		<!-- navigation statique -->
+		<navigation-case>
+			<from-outcome>pageUn</from-outcome>
+			<to-view-id>page1.xhtml</to-view-id>
+		</navigation-case>
+
+		<!-- navigation dynamique -->
+		<navigation-case>
+			<from-action>#{bean1.goToPage2}</from-action>
+			<from-outcome>pageDeux</from-outcome>
+			<to-view-id>page2.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+
+	<navigation-rule>
+		<!-- * signifie toutes les pages -->
+		<from-view-id>*</from-view-id>
+
+		<!-- navigation statique -->
+		<navigation-case>
+			<from-outcome>home</from-outcome>
+			<to-view-id>index.html</to-view-id>
+		</navigation-case>
+
+		<!-- navigation dynamique -->
+		<navigation-case>
+			<from-action>#{bean1.goToHome}</from-action>
+			<from-outcome>home</from-outcome>
+			<to-view-id>index.html</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+
+	<navigation-rule>
+		<from-view-id>test1</from-view-id>
+
+		<!-- navigation conditionelle -->
+		<navigation-case>
+			<from-outcome>test1LeTest</from-outcome>
+			<if>#{bean1.LeTest == "okjsf"}</if>
+			<to-view-id>validTest1.jsf</to-view-id>
+		</navigation-case>
+		
+		<!-- navigation conditionelle -->
+		<navigation-case>
+			<from-outcome>test1LeTest</from-outcome>
+			<if>#{bean1.LeTest == "okxhtml"}</if>
+			<to-view-id>validTest1.xhtml</to-view-id>
+		</navigation-case>
+		
+		<!-- cas par défaut -->
+		<navigation-case>
+			<from-outcome>test1LeTest</from-outcome>
+			<to-view-id>faultTest1.jsf</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+</faces-config>
