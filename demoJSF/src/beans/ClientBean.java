@@ -31,6 +31,7 @@ public class ClientBean implements Serializable {
 		return client;
 	}
 
+
 	// getters et setters
 	public long getId() {
 		//return id;
