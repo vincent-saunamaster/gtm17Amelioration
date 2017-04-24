@@ -15,15 +15,13 @@
 		<!-- affiche  bean1.getNom() avant la saisie par l'utilisateur
 		mais fera un "bean1.setNom()"  quand l'utilisateur appuira sur le bouton 
 		Les étapes de conversion et de validation s'effecturont avant le "bean1.setNom()" -->
-		bean1.nom<h:inputText value="#{bean1.nom}" />
+		bean1.nom<h:inputText value="#{bean1.client.nom}" />
 		<br />
-		bean1.prenom<h:inputText value="#{bean1.prenom}" />
+		bean1.prenom<h:inputText value="#{bean1.client.prenom}" />
 		<br />
 		<h:commandButton value="passer à recupFormulaire1"
-			action="recupFormulaire1" />
-		<br />
-		<h:commandButton value="passer à méthode bean1.recupform1()"
 			action="#{bean1.recupform1()}" />
+		<br />
 	</h:form>
 </h:body>
 </html>
