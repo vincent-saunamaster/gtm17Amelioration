@@ -31,8 +31,8 @@ public class ClientBean implements Serializable {
 	// le constructeur initialise une instance de sa classe métier
 	public ClientBean() {
 		Client cli = new Client();
-		cli.setNom(client.getNom());
-		cli.setPrenom(client.getPrenom());
+		//cli.setNom(client.getNom());
+		//cli.setPrenom(client.getPrenom());
 	}
 	
 	// la fonction du bouton qui envoie en BDD
