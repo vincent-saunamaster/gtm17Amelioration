@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Accueil</title>
+	<h:outputStylesheet library="dossierParDefaut"
+		name="css/bootstrap.min.css" />
+	<h:outputStylesheet library="dossierParDefaut" name="css/style.css" />
+</h:head>
+<body>
+	<h:form>
+		<section class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<!-- affiche tous les messages du contexte, 'errorclass' va chercher des  classes css -->
+				<h:messages errorClass="alert alert-danger"></h:messages>
+				<!-- tableau qui va positionner les éléments -->
+				<!-- 'styleclass' va chercher les classe css -->
+				<h:panelGrid columns="3" border="1" width="200" cellpadding="5"
+					styleClass="table-bordered table-striped table-condensed">
+					<h:outputLabel value="nom" />
+					<h:inputText id="nom" value="#{clientBean.client.nom}" label="nom"
+						required="true" requiredMessage="nom vide"></h:inputText>
+					<h:message for="nom" errorClass="error"></h:message>
+					<h:outputLabel value="prenom" />
+					<h:inputText id="prenom" value="#{clientBean.client.prenom}"
+						label="prenom" required="true" requiredMessage="prenom vide"></h:inputText>
+					<h:message for="prenom" errorClass="error"></h:message>
+				</h:panelGrid>
+				<h:commandButton type="submit"
+					value="#{clientBean.editmode ? 'modifier' : 'add'}"
+					action="#{clientBean.add}"></h:commandButton>
+			</div>
+		</section>
+		<section class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<h2>Liste des clients</h2>
+				<h:dataTable value="#{clientBean.list()}" var="cli"
+					styleClass="table-bordered table-striped table-condensed">
+
+					<h:column>
+						<f:facet name="header">id</f:facet>    				
+               #{cli.id}
+            </h:column>
+
+					<h:column>
+						<f:facet name="header">Nom</f:facet>    				
+               #{cli.nom}
+            </h:column>
+
+					<h:column>
+						<f:facet name="header">prenom</f:facet>
+               #{cli.prenom}
+            </h:column>
+
+					<h:column>
+						<f:facet name="header">supprimer</f:facet>
+						<!-- @form actualise le formulaire (utile qu'en ajax !!!!!) -->
+						<h:commandLink update="@form" value="supprimer"
+							action="#{clientBean.remove}">
+							<!-- va mettre le client local 'cli' dans le 'client' de clientBean -->
+							<f:setPropertyActionListener value="#{cli}"
+								target="#{clientBean.client}"></f:setPropertyActionListener>
+						</h:commandLink>
+					</h:column>
+					<h:column>
+						<f:facet name="header">modifier</f:facet>
+						<h:commandLink update="@form" value="modifier"
+							action="#{clientBean.modifier}">
+							<f:setPropertyActionListener value="#{cli}"
+								target="#{clientBean.client}"></f:setPropertyActionListener>
+						</h:commandLink>
+					</h:column>
+
+				</h:dataTable>
+			</div>
+		</section>
+	</h:form>
+</body>
+</html>
