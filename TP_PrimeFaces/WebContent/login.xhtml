@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Insert title here</title>
+</h:head>
+<h:body>
+	<p:panel header="Formulaire de Saisie">
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="2">
+				<h:outputLabel for="#{userManagedBean.username}" value="UserName" />
+				<h:inputText value="#{userManagedBean.username}" label="UserName"></h:inputText>
+
+				<h:outputLabel for="#{userManagedBean.password}" value="Password" />
+				<h:inputSecret value="#{userManagedBean.password}"></h:inputSecret>
+
+				<h:commandButton type="submit" value="Login"
+					action="#{userManagedBean.login}"></h:commandButton>
+			</h:panelGrid>
+		</h:form>
+	</p:panel>
+</h:body>
+</h:html>
